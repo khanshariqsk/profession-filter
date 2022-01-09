@@ -1,0 +1,48 @@
+.active {
+  border-bottom: 3px solid black;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.header-logo {
+  width: 15%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.header-logo img {
+  width: 80%;
+}
+
+.header-sections {
+  display: flex;
+  width: 20%;
+  height: 100%;
+}
+
+.header-form-section,
+.header-user-detail-section {
+  flex: 1;
+  cursor: pointer;
+  height: 100%;
+}
+
+.header-sections a{
+    text-decoration: none;
+    color:black
+}
+
+.header-form-section:hover {
+  border-bottom: 3px solid black;
+}
+
+.header-user-detail-section:hover {
+  border-bottom: 3px solid black;
+}

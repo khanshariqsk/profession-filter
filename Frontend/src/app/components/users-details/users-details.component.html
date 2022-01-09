@@ -1,0 +1,50 @@
+<div class="user-details-container">
+  <section class="user-filter-section-wrapper">
+    <div class="user-filter-section">
+      <section class="filter-section">
+          <div class="filter-section-tag">
+            <span>Filter</span>
+            <img src="/assets/filter-icon.svg" alt="">
+          </div>
+          <div class="filter-section-buttons">
+              <div class="filter-button-wrapper" *ngFor="let prof of professions">
+                  <button class="filter-button center" (click)="filterButtonHandler($event,prof)">{{prof}}</button>
+              </div>
+          </div>
+      </section>
+      <section class="sort-section"></section>
+    </div>
+  </section>
+  <section class="user-details-section">
+    <ng-container *ngIf="isDataFetched; else loader">
+      <div class="user-card" *ngFor="let user of totalUsers">
+        <div class="user-card-body">
+          <div
+            class="user-card-image"
+            [ngStyle]="{
+              'background-image':
+                'url(' + imageBaseUrl + '/' + user.imgUrl + ')'
+            }"
+          ></div>
+          <div class="user-card-details">
+            <span>{{ user.firstName + " " + user.lastName | titlecase }}</span>
+            <span>{{ user.email }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loader>
+      <div class="user-card" *ngFor="let user of totalUsers">
+        <div class="user-card-body">
+          <div class="user-card-image skeleton"></div>
+          <div class="user-card-details">
+            <div class="skeleton skeleton-text"></div>
+            <div class="skeleton skeleton-text last-child"></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </section>
+</div>

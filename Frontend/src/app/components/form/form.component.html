@@ -1,0 +1,112 @@
+
+<div class="form-container">
+  <section class="form-left-section center">
+    <img src="/assets/blockchain-image-form.jpg" alt="" />
+  </section>
+  <section class="form-right-section">
+    <div class="form-wrapper">
+      <form
+        #f="ngForm"
+        (ngSubmit)="onFormSubmit()"
+        class="form-fields"
+        name="form"
+      >
+        <div class="form-signup center">
+          <span>Sign Up</span>
+        </div>
+        <div class="form-group firstname">
+          <label for="firstname">First Name</label>
+          <input
+            type="text"
+            id="firstname"
+            required
+            minlength="5"
+            maxlength="20"
+            name="firstName"
+            [(ngModel)]="formData.firstName"
+            #firstName="ngModel"
+          />
+        </div>
+        <div class="form-group lastname">
+          <label for="lastname">Last Name</label>
+          <input
+            type="text"
+            id="lastname"
+            required
+            minlength="5"
+            maxlength="20"
+            name="lastName"
+            [(ngModel)]="formData.lastName"
+            #lastName="ngModel"
+          />
+        </div>
+        <div class="form-group email">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            required
+            name="email"
+            [(ngModel)]="formData.email"
+            #email="ngModel"
+          />
+        </div>
+        <div class="form-group password">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            required
+            minlength="8"
+            maxlength="20"
+            name="password"
+            [(ngModel)]="formData.password"
+            #password="ngModel"
+          />
+        </div>
+        <div class="form-group confirm-password">
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            required
+            minlength="8"
+            maxlength="20"
+            name="confirmPassword"
+            [(ngModel)]="formData.confirmPassword"
+            #confirmPassword="ngModel"
+          />
+        </div>
+        <div class="form-group confirm-password">
+          <label for="profession">Select Profession</label>
+          <select required
+          id="profession"
+          minlength="8"
+          maxlength="20"
+          name="profession"
+          [(ngModel)]="formData.profession"
+          #profession="ngModel">
+            <option [value]="prof" *ngFor="let prof of professions">{{prof}}</option>
+          </select>
+        </div>
+        <div class="image-upload">
+          <label for="image-upload" class="center"
+            >Choose Image
+            <input
+              #fileInput
+              type="file"
+              id="image-upload"
+              required
+              hidden
+              (input)="onImageFileUpload(fileInput?.files[0])"
+            />
+          </label>
+          <a *ngIf="isFileUploaded">
+            <img src="/assets/tick-image-file-upload.jpg" alt="" />
+          </a>
+        </div>
+        <button [disabled] = "!buttonActionable" type="submit" class="form-submit">Submit</button>
+      </form>
+    </div>
+  </section>
+</div>
